@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <h1>My Library</h1>
+    <div id="library">
+
+    </div>
+    <script>
+        const library = [
+            {
+                author: 'Bill Gates',
+                title: 'The Road Ahead',
+                readingStatus: true
+            },
+            {
+                author: 'Steve Jobs',
+                title: 'Walter Isaacson',
+                readingStatus: true
+            },
+            {
+                author: 'Suzanne Collins',
+                title: 'Mockingjay: The Final Book of The Hunger Games',
+                readingStatus: false
+            }
+        ];
+        const libraryElement = document.getElementById('library')
+        
+        library.forEach(item => {
+            const bookElement = document.createElement("div")
+
+            const authorElement = document.createElement("h2")
+            authorElement.innerText = item.author
+
+            const titleElement = document.createElement("p")
+            titleElement.innerText = item.title
+
+            const readingStatusElement = document.createElement("p")
+            readingStatusElement.innerHTML = item.readingStatus ? "Läst" : "Inte läst"
+
+            readingStatusElement.addEventListener("click", function() {
+                if(readingStatusElement.innerHTML != "Läst") {
+                    readingStatusElement.innerHTML = "Läst"
+                } else {
+                    readingStatusElement.innerHTML = "Inte läst"
+                }
+            })
+
+            bookElement.appendChild(authorElement)
+            bookElement.appendChild(titleElement)
+            bookElement.appendChild(readingStatusElement)
+
+            libraryElement.appendChild(bookElement)
+        })
+    </script>
+</body>
+
+</html>
